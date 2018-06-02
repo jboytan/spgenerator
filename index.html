@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang = "en" ng-app = "generatorApp">
+    <head>
+        <title> SP Code Generator </title>
+
+        <script type = "text/javascript" src = "js/angular.min.js"></script>
+        <script type = "text/javascript" src = "js/xlsx.full.min.js"></script>
+        <script type = "text/javascript" src = "js/jquery-3.3.1.min.js"></script>
+        <script type = "text/javascript" src = "js/index.js"></script>
+
+        <link rel = "stylesheet" type = "text/css" href = "css/bootstrap.min.css">
+    </head>
+    <body ng-controller = "GeneratorController">
+        <div class = "container">
+            <br/> <br/>
+
+            <h3> SP Code Generator </h3>
+
+            <br/>
+
+            <form>
+                <fieldset>
+                    <div class = "form-group">
+                        <label for = "title" class = "col-sm-2 col-form-label"> Title </label>
+
+                        <div class = "col-sm-4">
+                            <input type = "text" class = "form-control" id = "title" placeholder = "Title of Report">
+                        </div>
+                    </div>
+                    <div class = "form-group">
+                        <label for = "creator" class = "col-sm-2 col-form-label"> SP Creator </label>
+
+                        <div class = "col-sm-4">
+                            <input type = "text" class = "form-control" id = "creator" placeholder = "Your Enterprise ID">
+                        </div>
+                    </div>
+                            
+                    <div class = "form-group">
+                        <label for = "criteria" class = "col-sm-2 col-form-label"> Criteria </label>
+    
+                        <div class = "col-sm-4">
+                            <input type = "file" class = "form-control-file" id = "criteria">
+                        </div>
+                    </div>
+
+                    <div class = "form-group">
+                            <label for = "dataset" class = "col-sm-2 col-form-label"> Dataset </label>
+        
+                            <div class = "col-sm-4">
+                                <input type = "file" class = "form-control-file" id = "dataset">
+                            </div>
+                        </div>
+
+                    <div class = "form-group">
+                        <div class = "col-sm-5">
+                            <button type = "submit" class = "btn btn-primary" ng-click = "uploadExcel()"> Generate </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>
