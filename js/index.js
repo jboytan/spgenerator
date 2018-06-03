@@ -3,28 +3,30 @@
 
     app.controller('GeneratorController', ['$scope', generatorController]);
 
-    var excelJsonObj = [];
+    var x = [];
 
     function generatorController ($scope) {
-        $scope.uploadExcel = function () {
-            var myFile = document.getElementById('criteria');
-            var input = myFile;
+        $scope.generateReport = function () {
+            readFile('criteria');
+            readFile('dataset');
+        }
+
+        function readFile(filename) {
+            var input = document.getElementById(filename);
             var reader = new FileReader();
+            var excelJson = [];
 
             reader.onload = function () {
-                var fileData = reader.result;
-                var workbook = XLSX.read(fileData, {type:'binary'});
+                var workbook = XLSX.read(reader.result, {type:'binary'});
 
-                workbook.SheetNames.forEach(function (SheetName) {
-                    var rowObject = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[SheetName]);
-
-                    excelJsonObj = rowObject;
+                workbook.SheetNames.forEach(function (sheetName) {
+                    excelJson = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
                 });
 
-                console.log(excelJsonObj);
+                x.push(excelJson);
             };
 
-            reader.readAsBinaryString(myFile.files[0]);
+            reader.readAsBinaryString(input.files[0]);
         }
     }
 })();
